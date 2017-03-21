@@ -5,19 +5,20 @@ import numpy as np
 DB_HOST = "localhost"
 DB_USER = "frav"
 DB_PASS = "VXxL4UOLvB6wc01Y3Cxi"
-DB_NAME = "piloto_barajas"
+DB_NAME = "piloto_algeciras"
 
 con = Mdb.connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
 cur = con.cursor()
 
-# ScoreReconocimientoFacialVivoChip
+# cur.execute("SELECT `ScoreReconocimientoFacialVivoChip` FROM `completados`;")
 cur.execute("SELECT `ScoreDactilar` FROM `completados`;")
 data = cur.fetchall()
 data = np.asarray(data)
 
 fn_rate = np.empty(shape=0)
 tp_rate = np.empty(shape=0)
-umbrals = [60,61,62,63,64,65,66,67,68,69,70]
+# umbrals = [10, 40, 50, 50, 60, 70, 80, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+umbrals = [10, 40, 50, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70]
 
 for umbral in umbrals:
     tp = 0
