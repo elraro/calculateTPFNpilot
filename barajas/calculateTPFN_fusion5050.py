@@ -10,7 +10,8 @@ DB_NAME = "piloto_barajas"
 con = Mdb.connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
 cur = con.cursor()
 
-cur.execute("SELECT (`ScoreDactilar` + `ScoreReconocimientoFacialVivoChip`) / 2 as media FROM completados")
+cur.execute(
+    "SELECT (ScoreDactilar + ScoreReconocimientoFacialVivoChip) / 2 as media, ScoreReconocimientoFacialVivoChip, ScoreDactilar FROM completados")
 data = cur.fetchall()
 data = np.asarray(data)
 
@@ -22,10 +23,16 @@ for umbral in umbrals:
     tp = 0
     fn = 0
     for d in data:
-        if d[0] >= umbral:
-            tp += 1
+        if d[2] != 0:
+            if d[0] >= umbral:
+                tp += 1
+            else:
+                fn += 1
         else:
-            fn += 1
+            if d[1] >= umbral:
+                tp += 1
+            else:
+                fn += 1
     try:
         fn_rate_eer = fn / (fn + tp)
     except ZeroDivisionError:

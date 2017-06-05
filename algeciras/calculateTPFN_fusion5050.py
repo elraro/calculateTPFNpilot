@@ -10,7 +10,7 @@ DB_NAME = "piloto_algeciras"
 con = Mdb.connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
 cur = con.cursor()
 
-cur.execute("SELECT (`ScoreDactilar` + `ScoreReconocimientoFacialVivoChip`) / 2 as media FROM completados WHERE `ScoreDactilar` != 0 AND `ScoreReconocimientoFacialVivoChip` != 0")
+cur.execute("SELECT (`ScoreDactilar` + `ScoreReconocimientoFacialVivoChip`) / 2 as media FROM completados")
 data = cur.fetchall()
 data = np.asarray(data)
 

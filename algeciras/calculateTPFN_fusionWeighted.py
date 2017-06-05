@@ -5,7 +5,7 @@ import numpy as np
 DB_HOST = "localhost"
 DB_USER = "frav"
 DB_PASS = "VXxL4UOLvB6wc01Y3Cxi"
-DB_NAME = "piloto_barajas"
+DB_NAME = "piloto_algeciras"
 
 con = Mdb.connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
 cur = con.cursor()
@@ -177,20 +177,15 @@ for d in data:
     # ca.NatualSkinColour
     weights.append(np.array([weight_face, float(d[1]), weight_finger, float(d[0])]))
 
+print(weights)
 for umbral in umbrals:
     tp = 0
     fn = 0
     for d in weights:
-        if d[3] != 0:
-            if (d[1]*(d[0]/100)+d[3]*(d[2]/100)) >= umbral:
-                tp += 1
-            else:
-                fn += 1
+        if (d[1]*(d[0]/100)+d[3]*(d[2]/100)) >= umbral:
+            tp += 1
         else:
-            if d[1] >= umbral:
-                tp += 1
-            else:
-                fn += 1
+            fn += 1
     try:
         fn_rate_eer = fn / (fn + tp)
     except ZeroDivisionError:
