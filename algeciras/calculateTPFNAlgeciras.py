@@ -2,10 +2,10 @@ import MySQLdb as Mdb
 import numpy as np
 
 # Hardcoded
-DB_HOST = "localhost"
-DB_USER = "frav"
-DB_PASS = "VXxL4UOLvB6wc01Y3Cxi"
-DB_NAME = "piloto_algeciras"
+DB_HOST = ""
+DB_USER = ""
+DB_PASS = ""
+DB_NAME = ""
 
 con = Mdb.connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
 cur = con.cursor()

@@ -3,10 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Hardcoded
-DB_HOST = "localhost"
-DB_USER = "frav"
-DB_PASS = "VXxL4UOLvB6wc01Y3Cxi"
-DB_NAME = "piloto_barajas"
+DB_HOST = ""
+DB_USER = ""
+DB_PASS = ""
+DB_NAME = ""
 
 con = Mdb.connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
 cur = con.cursor()

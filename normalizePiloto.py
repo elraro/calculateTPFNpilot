@@ -2,10 +2,10 @@ import MySQLdb as Mdb
 import numpy as np
 
 # Hardcoded
-DB_HOST = "localhost"
-DB_USER = "frav"
-DB_PASS = "VXxL4UOLvB6wc01Y3Cxi"
-DB_NAME = "piloto_ambos"
+DB_HOST = ""
+DB_USER = ""
+DB_PASS = ""
+DB_NAME = ""
 HIGH = 70
 LOW = 0
 
